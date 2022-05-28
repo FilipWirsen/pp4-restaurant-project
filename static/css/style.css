@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+html { 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+body {
+    background: black url("/static/images/background.jpg") no-repeat;
+}
+
+.nav-link{
+  font-family: 'Baloo 2', cursive;
+}
+
+.main-container {
+  height: 65vh;
+  width: 50%;
+  margin: auto;
+  margin-top: 10vh;
+}
