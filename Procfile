@@ -1,1 +1,1 @@
-web: gunicorn pp4-restaurant-project.wsgi
+web: gunicorn restaurant.wsgi
