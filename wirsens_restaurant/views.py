@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .forms import MakeReservationForm
 from .models import Reservation, Table
 from django.contrib import messages
-
+import datetime
 # Create your views here.
 
 
@@ -55,8 +55,15 @@ def reserve_table(request):
             post.time = data['book_time']
             post.end_time = post.time + 120
 
+            if post.date < datetime.date.today():
+                form = MakeReservationForm()
+                messages.error(
+                    request, "Date has to be today or future, please choose another date")
+                return render(
+                    request, 'reservation/reservation.html', {'form': form})
             availible_table, availible = check_availability(
                 post.size, post.date, post.time)
+
             if availible:
                 post.table = availible_table
                 post.save()
@@ -65,7 +72,8 @@ def reserve_table(request):
                     request, 'reservation/reservation_details.html', {'booking': booking})
             else:
                 form = MakeReservationForm()
-                messages.error(request, f"Time {post.time} not availible, please choose another")
+                messages.error(
+                    request, "Time is not availible, please choose another")
                 return render(
                     request, 'reservation/reservation.html', {'form': form})
     else:
