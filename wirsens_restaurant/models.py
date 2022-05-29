@@ -12,7 +12,7 @@ class Table(models.Model):
     table_size = models.IntegerField()
 
     def __str__(self):
-        return f"Table Number: {self.TableID}, Table Size: {self.table_size}"
+        return f"Table Number: {self.TableID}"
 
 
 class Reservation(models.Model):

@@ -40,7 +40,9 @@ def check_availability(party_size, date, start_time):
 
 
 def reserve_table(request):
-    
+    """
+    Reserve table based on MakeReservationForm
+    """
     if request.method == 'POST':
         form = MakeReservationForm(request.POST)
         if form.is_valid():
@@ -57,14 +59,13 @@ def reserve_table(request):
                 post.size, post.date, post.time)
             if availible:
                 post.table = availible_table
-                form = MakeReservationForm()
                 post.save()
-                messages.success(request, 'Booked')
+                booking = post
                 return render(
-                    request, 'reservation/reservation.html', {'form': form})
+                    request, 'reservation/reservation_details.html', {'booking': booking})
             else:
                 form = MakeReservationForm()
-                messages.error(request, 'Time not availible')
+                messages.error(request, f"Time {post.time} not availible, please choose another")
                 return render(
                     request, 'reservation/reservation.html', {'form': form})
     else:
