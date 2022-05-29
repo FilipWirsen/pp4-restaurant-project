@@ -56,11 +56,11 @@ def reserve_table(request):
             post.end_time = post.time + 120
 
             if post.date < datetime.date.today():
-                form = MakeReservationForm()
                 messages.error(
                     request, "Date has to be today or future, please choose another date")
                 return render(
                     request, 'reservation/reservation.html', {'form': form})
+
             availible_table, availible = check_availability(
                 post.size, post.date, post.time)
 
