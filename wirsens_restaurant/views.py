@@ -3,6 +3,7 @@ from .forms import MakeReservationForm
 from .models import Reservation, Table
 from django.contrib import messages
 import datetime
+from django.views import View
 # Create your views here.
 
 
@@ -79,3 +80,16 @@ def reserve_table(request):
     else:
         form = MakeReservationForm()
         return render(request, 'reservation/reservation.html', {'form': form})
+
+
+class ReservationDetail(View):
+
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        reservations = Reservation.objects.filter(user=user)
+        return render(
+            request,
+            'reservation/manage_reservations.html',
+            {
+                'reservations': reservations
+            })

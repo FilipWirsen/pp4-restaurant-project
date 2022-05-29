@@ -13,6 +13,10 @@ body {
   font-size: 2vh;
 }
 
+.navbar-brand {
+  margin-left: 20px;
+}
+
 .main-container {
   height: 65vh;
   width: 50%;
