@@ -1,1 +1,28 @@
 {% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<table class="table text-white">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">Guests</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for reservation in reservations %}
+      <tr>
+        <td>{{ reservation.user }}</td>
+        <td>{{ reservation.book_date }}</td>
+        <td>{{ reservation.get_book_time_display }}</td>
+        <td>{{ reservation.party_size }}</td>
+        <td><button class="btn btn-primary bg-warning"><a href="#">Edit</a></button></td>
+        <td><button class="btn btn-primary bg-danger">Delete</button></td>
+      </tr>
+      {% endfor %}
+    </table>
+{% endif %}
+{% endblock %}

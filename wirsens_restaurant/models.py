@@ -20,6 +20,7 @@ class Reservation(models.Model):
     Model for storing reservations.
     Each time choice key is the amount of minutes until the time 'value'
     """
+    reservation_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     party_size = models.IntegerField()
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
