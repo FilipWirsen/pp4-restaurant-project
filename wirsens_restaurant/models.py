@@ -3,7 +3,11 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 # Create your models here.
 
+
 class Table(models.Model):
+    """
+    Model for restaurant tables that specifies the table size
+    """
     TableID = models.AutoField(primary_key=True)
     table_size = models.IntegerField()
 
@@ -13,7 +17,8 @@ class Table(models.Model):
 
 class Reservation(models.Model):
     """
-    Model for storing reservations
+    Model for storing reservations.
+    Each time choice key is the amount of minutes until the time 'value'
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     party_size = models.IntegerField()
@@ -22,11 +27,11 @@ class Reservation(models.Model):
     TIME_CHOICES = [
         (1050, '17:30'),
         (1065, '17:45'),
-        (1080, '18:00'), 
+        (1080, '18:00'),
         (1095, '18:15'),
-        (1110, '18:30'), 
+        (1110, '18:30'),
         (1125, '18:45'),
-        (1140, '19:00'), 
+        (1140, '19:00'),
         (1155, '19:15'),
         (1170, '19:30'),
         (1185, '19:45'),
@@ -38,7 +43,7 @@ class Reservation(models.Model):
         (1275, '21:15'),
         (1290, '21:30'),
         (1305, '21:45'),
-        (1320, '22:00'), 
+        (1320, '22:00'),
     ]
     book_time = models.IntegerField(choices=TIME_CHOICES)
     end_time = models.IntegerField(blank=True)
