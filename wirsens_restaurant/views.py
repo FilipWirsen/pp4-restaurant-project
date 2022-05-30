@@ -93,3 +93,16 @@ class ReservationDetail(View):
             {
                 'reservations': reservations
             })
+
+
+class UpdateReservation(View):
+    
+    def get(self, request, reservation_id):
+        reservation = Reservation.objects.filter(pk=reservation_id)
+        return render(
+            request,
+            'reservation/update_reservation.html',
+            {
+                'reservation': reservation
+            },
+        )
