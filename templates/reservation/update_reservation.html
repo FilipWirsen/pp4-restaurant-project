@@ -1,12 +1,44 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Update reservation</h1>
-
-    {% for data in reservation %}
-    {{ data.user }}
-    {{ data.book_date }}
-    {{ data.get_book_time_display }}
-    {{ data.party_size }}
-    {% endfor %}
+    {% if user.is_authenticated %}
+    <form action="" method="POST">
+          <div class="col-md-6 mx-auto">
+            <h1 class="text-center header">Update reservation</h1>
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="party_size" class="form-label"><P>Number of Guests</P></label>
+              <input type="number" name="party_size" class="form-control" id="exampleInputPassword1" placeholder="{{reservation.party_size}}">
+            </div>
+            <div class="mb-3">
+              <label for="book_date" class="form-label"><P>Date</P></label>
+              <input type="date" name="book_date" id="date" class="form-control" id="exampleInputPassword1" placeholder="">
+            </div>
+            <div class="mb-3">
+              <label for="book_time" class="form-label"><P>Time</P></label>
+              <select name="book_time" required="" id="id_book_time" class="form-select" placeholder="{{reservation.get_book_time_display}}">
+                {% for key, value in form.fields.book_time.choices %}
+                <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+    
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary mt-3 mb-3">Update</button>
+          </div>
+        </div>
+    </form>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="bg-danger">
+        {{message}}
+      </div>
+      {% endfor %}
+    {% endif %}
+    {% else %}
+    <h1>Login or register to book a table</h1>
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+    
 
 {% endblock %}

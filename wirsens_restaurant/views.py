@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import MakeReservationForm
 from .models import Reservation, Table
 from django.contrib import messages
 import datetime
 from django.views import View
+from django.views.generic import DeleteView
+from django.urls import reverse_lazy
 # Create your views here.
 
 
@@ -37,7 +39,9 @@ def check_availability(party_size, date, start_time):
         for table in tables:
             if not Reservation.objects.filter(book_date=date, book_time__range=(bookings_before_time, bookings_after_time), table=table).exists():
                 availible_table = table
-        return availible_table, True
+                return availible_table, True
+            else:
+                return False, False
 
 
 def reserve_table(request):
@@ -95,14 +99,58 @@ class ReservationDetail(View):
             })
 
 
-class UpdateReservation(View):
-    
-    def get(self, request, reservation_id):
-        reservation = Reservation.objects.filter(pk=reservation_id)
+def update_reservation(request, reservation_id):
+    """
+    Function to update reservation
+    """
+    reservation = Reservation.objects.filter(pk=reservation_id).first()
+    form = MakeReservationForm(request.POST or None, instance=reservation)
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.user = request.user
+        data = form.cleaned_data
+
+        post.size = data['party_size']
+        post.date = data['book_date']
+        post.time = data['book_time']
+        post.end_time = post.time + 120
+
+        if post.date < datetime.date.today():
+            messages.error(
+                request, "Date has to be today or future, please choose another date")
+            return render(
+                request, 'reservation/update_reservation.html', {'form': form})
+
+        availible_table, availible = check_availability(
+            post.size, post.date, post.time)
+
+        if availible:
+            post.table = availible_table
+            post.save()
+            booking = post
+            return render(
+                request, 'reservation/reservation_details.html', {'booking': booking})
+        else:
+            form = MakeReservationForm()
+            messages.error(
+                request, "Time is not availible, please choose another")
+            return render(
+                request, 'reservation/update_reservation.html', {'form': form})
+    else:
+        messages.error(request, "Please enter all fields")
         return render(
-            request,
-            'reservation/update_reservation.html',
-            {
-                'reservation': reservation
-            },
-        )
+            request, 'reservation/update_reservation.html', {'form': form, 'reservation': reservation})
+
+
+def delete_reservation(request, reservation_id):
+    """
+    View to delete reservation
+    """
+    reservation = Reservation.objects.get(pk=reservation_id)
+
+    if request.method == "POST":
+        reservation.delete()
+        return render(request, 'home.html')
+    
+    return render(
+        request, 'reservation/delete_reservation.html', {'reservation': reservation})
