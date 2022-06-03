@@ -8,6 +8,7 @@
         <th scope="col">Date</th>
         <th scope="col">Time</th>
         <th scope="col">Guests</th>
+        <th scope="col">Booking Number</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
       </tr>
@@ -19,6 +20,7 @@
         <td>{{ reservation.book_date }}</td>
         <td>{{ reservation.get_book_time_display }}</td>
         <td>{{ reservation.party_size }}</td>
+        <td>{{ reservation.pk}}</td>
         <td><button class="btn btn-primary bg-warning"><a href="{% url 'update-reservation' reservation.pk %}">Edit</a></button></td>
         <td><button class="btn btn-primary bg-danger"><a href="{% url 'delete-reservation' reservation.pk %}">Delete</a></button></td>
       </tr>

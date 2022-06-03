@@ -6,6 +6,7 @@ import datetime
 from django.views import View
 from django.views.generic import DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -14,6 +15,13 @@ def home(request):
     Returns home page
     """
     return render(request, 'home.html')
+
+
+def menu(request):
+    """
+    Returns menu page
+    """
+    return render(request, 'menu.html')
 
 
 def check_availability(party_size, date, start_time):
@@ -43,7 +51,7 @@ def check_availability(party_size, date, start_time):
             else:
                 return False, False
 
-
+@login_required
 def reserve_table(request):
     """
     Reserve table based on MakeReservationForm
@@ -98,7 +106,7 @@ class ReservationDetail(View):
                 'reservations': reservations
             })
 
-
+@login_required
 def update_reservation(request, reservation_id):
     """
     Function to update reservation
@@ -142,6 +150,7 @@ def update_reservation(request, reservation_id):
             request, 'reservation/update_reservation.html', {'form': form, 'reservation': reservation})
 
 
+@login_required
 def delete_reservation(request, reservation_id):
     """
     View to delete reservation
