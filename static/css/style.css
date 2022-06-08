@@ -1,15 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
 
 body {
-    /*background: black url("/static/images/background.jpg") no-repeat;*/
-    background: url("https://static.groupegrenouille.se/media/3252/matsalen-3-herobild.jpg?width=0&height=1600&mode=max&upscale=false&quality=64");
+    background: black url("/static/images/matsalen.jpg") no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     font-family: 'Baloo 2', cursive;
 }
-
+/* Base style */
 .nav-link {
   font-size: 2vh;
 }
@@ -29,6 +28,11 @@ body {
   margin-top: 10vh;
 }
 
+.info-text {
+    padding-top: 8px;
+    margin-bottom: 0px;
+    margin-left: auto;
+}
 
 /*Menu Page CSS */
 .food-menu-card {
@@ -101,4 +105,10 @@ body {
 
 .food-description {
     width: 50%;
+}
+
+/* Home Page */
+
+.header {
+    font-size: 4rem;
 }

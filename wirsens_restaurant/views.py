@@ -106,6 +106,7 @@ class ReservationDetail(View):
                 'reservations': reservations
             })
 
+
 @login_required
 def update_reservation(request, reservation_id):
     """
