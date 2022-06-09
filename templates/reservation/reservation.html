@@ -8,15 +8,15 @@
         <h1 class="text-center header">Book a Table</h1>
         {% csrf_token %}
         <div class="mb-3">
-          <label for="party_size" class="form-label"><P>Number of Guests</P></label>
+          <label for="party_size" class="form-label">Number of Guests (max 4)</label>
           <input type="number" name="party_size" class="form-control" id="exampleInputPassword1">
         </div>
         <div class="mb-3">
-          <label for="book_date" class="form-label"><P>Date</P></label>
+          <label for="book_date" class="form-label text-white">Date</label>
           <input type="date" name="book_date" id="date" class="form-control" id="exampleInputPassword1">
         </div>
         <div class="mb-3">
-          <label for="book_time" class="form-label"><P>Time</P></label>
+          <label for="book_time" class="form-label text-white">Time</label>
           <select name="book_time" required="" id="id_book_time" class="form-select">
             {% for key, value in form.fields.book_time.choices %}
             <option value="{{ key }}">{{ value }}</option>

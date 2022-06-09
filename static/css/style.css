@@ -9,7 +9,9 @@ body {
     font-family: 'Baloo 2', cursive;
 }
 /* Base style */
-
+p, label, span {
+    color: white;
+}
 .nav-link {
   font-size: 2vh;
 }

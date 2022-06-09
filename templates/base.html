@@ -35,6 +35,9 @@
             <a class="nav-link" href="{% url 'login' %}">Login</a>
             <a class="nav-link" href="{% url 'register' %}">Register</a>
             {% endif %}
+            {% if user.is_superuser %}
+            <a class="nav-link" href="{% url 'bookings' %}">Reservations</a>
+            {% endif %}
           </div>
         </div>
       </nav>
@@ -48,7 +51,12 @@
   </div>
   <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
     <div class="container text-center">
-      <small>Copyright &copy; Wirséns</small>
+      <h5>Copyright &copy; Wirséns</h5>
+      <strong>Adress: Matvägen 4, Stockholm</strong>
+      <br>
+      <strong>Phone: +46701121212</strong>
+      <br>
+      <strong>Email: wirsens@gmail.com</strong>
     </div>
   </footer>
 </body>

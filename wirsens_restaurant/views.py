@@ -169,3 +169,12 @@ def delete_reservation(request, reservation_id):
     
     return render(
         request, 'reservation/delete_reservation.html', {'reservation': reservation})
+
+
+def view_bookings(request):
+    """
+    View for superuser to view all bookings for todays date
+    """
+    reservations = Reservation.objects.filter(
+        book_date=datetime.date.today()).order_by('book_time')
+    return render(request, 'bookings.html', {'reservations': reservations})

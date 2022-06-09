@@ -3,7 +3,7 @@
 <h1>Cancel Reservation</h1>
 <form method="POST">
     {% csrf_token %}
-    <h3>Are you sure you want to cancel your reservation</h3>
+    <h3>Are you sure you want to cancel this reservation</h3>
     <h2>Details:</h2>
     <p class="text-white">Booking number: {{ reservation.pk }}</p>
     <p class="text-white">Date: {{ reservation.book_date }}</p>
