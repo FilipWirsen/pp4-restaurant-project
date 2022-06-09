@@ -7,8 +7,13 @@ A live version can be found [here]()
 
 ## **CONTENTS**
 - [UX](#ux)
-  - [Project Goals](#project-goals)
   - [User Stories](#user-stories)
+- [Features](#features) 
+  - [Home Page](#home-page)
+  - [Menu Page](#menu-page)
+  - [Register Page](#register-page)
+  - [Login Page](#login-page)
+
 
 
 
@@ -74,6 +79,19 @@ Footer:
 #### Menu Page
 
 The menu page has three diffrent tabs that shows the menu for starters, mains and desserts. Here the user can find the name of the dish, the price and the ingredients.
+
+
+#### Register Page
+
+The register page lets the user create an account by entering the following: Username, First name, Last name, email, password and password again for verification
+
+#### Login Page
+
+The login page lets the user login using their username and password
+
+#### Book a Table Page
+
+The book a table page lets user reserve a table witch is then saved to their account. The user selects a number of guests a date and a time. Once this is done and the user clicks on "Book" a function checks if there are any tables availible and then reserves the table.
 
 ### <ins>Bugs</ins>
 Css not working on heroku
