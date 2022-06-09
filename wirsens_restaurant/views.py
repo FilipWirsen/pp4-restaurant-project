@@ -48,8 +48,9 @@ def check_availability(party_size, date, start_time):
             if not Reservation.objects.filter(book_date=date, book_time__range=(bookings_before_time, bookings_after_time), table=table).exists():
                 availible_table = table
                 return availible_table, True
-            else:
-                return False, False
+            
+        return False, False
+
 
 @login_required
 def reserve_table(request):

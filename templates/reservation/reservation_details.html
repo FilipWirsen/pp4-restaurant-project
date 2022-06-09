@@ -2,9 +2,9 @@
 {% block title %}Reservation{% endblock %}
 {% block content %}
     <h1>Your booking details:</h1>
-    <p>Booking number: {{ booking.pk }}</p>
-    <p>Party size: {{ booking.party_size }}</p>
-    <p>Date: {{ booking.book_date }}</p>
-    <p>Time: {{ booking.get_book_time_display }}</p>
-    <p>Name: {{ booking.user }}</p>
+    <p class="text-white">Booking number: {{ booking.pk }}</p>
+    <p class="text-white">Party size: {{ booking.party_size }}</p>
+    <p class="text-white">Date: {{ booking.book_date }}</p>
+    <p class="text-white">Time: {{ booking.get_book_time_display }}</p>
+    <p class="text-white">Name: {{ booking.user }}</p>
 {% endblock %}

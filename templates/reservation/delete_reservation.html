@@ -3,13 +3,13 @@
 <h1>Cancel Reservation</h1>
 <form method="POST">
     {% csrf_token %}
-    <h3>Are you sure you want to delete reservation</h3>
+    <h3>Are you sure you want to cancel your reservation</h3>
     <h2>Details:</h2>
-    <p>Booking number: {{ reservation.pk }}</p>
-    <p>Date: {{ reservation.book_date }}</p>
-    <p>Time: {{ reservation.book_time }}</p>
-    <p>Party size: {{ reservation.party_size }}</p>
-    <p>Name: {{ reservation.user }}</p>
+    <p class="text-white">Booking number: {{ reservation.pk }}</p>
+    <p class="text-white">Date: {{ reservation.book_date }}</p>
+    <p class="text-white">Time: {{ reservation.book_time }}</p>
+    <p class="text-white">Party size: {{ reservation.party_size }}</p>
+    <p class="text-white">Name: {{ reservation.user }}</p>
     <button type="submit" class="btn btn-danger">Delete</button>
 </form>
 {% endblock %}
