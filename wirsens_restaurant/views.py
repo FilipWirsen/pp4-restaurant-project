@@ -68,6 +68,10 @@ def reserve_table(request):
             post.time = data['book_time']
             post.end_time = post.time + 120
 
+            if post.size > 4:
+                messages.error(request, 'You can only reserve tables for 1-4 people')
+                return render(
+                    request, 'reservation/reservation.html', {'form': form})
             if post.date < datetime.date.today():
                 messages.error(
                     request, "Date has to be today or future, please choose another date")
