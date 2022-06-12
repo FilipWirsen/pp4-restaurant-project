@@ -47,8 +47,7 @@ def check_availability(party_size, date, start_time):
         for table in tables:
             if not Reservation.objects.filter(book_date=date, book_time__range=(bookings_before_time, bookings_after_time), table=table).exists():
                 availible_table = table
-                return availible_table, True
-            
+                return availible_table, True            
         return False, False
 
 
@@ -100,7 +99,9 @@ def reserve_table(request):
 
 
 class ReservationDetail(View):
-
+    """
+    Returns booking details
+    """
     def get(self, request, *args, **kwargs):
         user = request.user
         reservations = Reservation.objects.filter(user=user)
@@ -166,7 +167,6 @@ def delete_reservation(request, reservation_id):
     if request.method == "POST":
         reservation.delete()
         return render(request, 'home.html')
-    
     return render(
         request, 'reservation/delete_reservation.html', {'reservation': reservation})
 

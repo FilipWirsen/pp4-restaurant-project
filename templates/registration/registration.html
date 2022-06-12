@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<form action="" method="post">
+<form method="post">
     <h1>Create a new account</h1>
     {% csrf_token %}
     {{ form.as_p}}

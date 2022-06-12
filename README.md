@@ -2,7 +2,7 @@
 
 This is a full-stack framework project build using Django, Python, HTML, CSS and JavaScript. The main goal with this project is to create a functioning and responsive full-stack website based around a reservation system. 
 
-A live version can be found [here]()
+A live version can be found [here](https://pp4-restaurant-project.herokuapp.com/)
 
 
 ## **CONTENTS**
@@ -42,9 +42,9 @@ The users will be looking for:
 - As a **site owner** i want users not be able to book if all of our tables are full so that i can avoid double bookings.
 - As a **site owner** i want to see all of the reservations for the night so that i can greet the customers and show them to their table.
 
-### <ins>Design</ins>
+### <ins>DESIGN</ins>
 
-#### Wireframe
+#### Wireframe:
 
 The wire frames for most of the pages showcasing the structure of the site. Created using ![balsamiq](https://balsamiq.cloud)
 
@@ -57,7 +57,7 @@ The wire frames for most of the pages showcasing the structure of the site. Crea
 - [Book page](readme/images/book-design.png)
 
 
-#### Color Scheme
+#### Color Scheme: 
 
 The main goal for the colors was to create a soothing and relaxing scheme that would make the user feel warm and welcome. The colors used are the following:
 
@@ -77,8 +77,10 @@ The main goal for the colors was to create a soothing and relaxing scheme that w
 
 
 ### <ins>Tools</ins>
-* Balsamiq - Wireframing.
-* Heroku - Used for hosting the website.
+* [Balsamiq](https://balsamiq.com/) - Wireframing.
+* [Heroku](https://dashboard.heroku.com) - Used for hosting the website.
+* [Cloudinary](https://cloudinary.com/) - Used for managing images used in production
+* [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) - was used for styling the register and login form.
 
 
 ### <ins>Features</ins>
@@ -225,6 +227,84 @@ The key is an int witch represents the amount of minutes passed until the time (
 Insted of having to work with time values i could work with integers witch made things a whole lot easier, each booking is for two hours so all i had to do was set the end_time to the book_time + 120. With this structure it also makes the diffrent choices flexible and i could add any time i wanted without facing any problems with the logic.
 
 
+## **TESTING**
+
+### <ins>User Story Testing</ins>
+
+- As a **site user** i want to be able to view the menu so that i know what food the restaurant serves.
+- As a **site user** i can find information about the restaurant so that i can collect information such as contact information and open times.
+- As a **site user** i can create an account so that my bookings are saved to my profile.
+- As a **site user** i can login so that i can make reservations.
+- As a **site user** i can make reservations so that I'm guaranteed a table.
+- As a **site user** i can edit and delete my reservations so that the reservation is flexible.
+- As a **site owner** i want users not be able to book if all of our tables are full so that i can avoid double bookings.
+- As a **site owner** i want to see all of the reservations for the night so that i can greet the customers and show them to their table.
+
+I asked three of my friends to complete the following tasks and then answer two questions:
+
+* View the menu and write down what you would order for starter, main and dessert.
+* Find what kind of food the restaurant serves and how to contact them via email or phone.
+* Create an account and make a reservation.
+* Find your reservation details.
+* Edit your reservation.
+* Find your new reservation details.
+* Delete your reservation.
+
+1. Whats the purpose of the site?
+2. Did you encounter any issues while trying to complete the tasks?
+
+I also asked them to complete theese tasks in the admin panel in the mind of a site owner/restaurant owner:
+
+* Find all bookings for the night.
+* Find all bookings for 17:45.
+* Find all bookings that are booked for the user "filip"
+
+3. Did you encounter any issues while trying to complete these tasks?
+
+
+
+#### Feedback:
+Two of them completed the tasks on their computers and the third did it using their mobile device.
+All three of them managed to complete the tasks within 10 minutes witch made me sure everything was working fine and that the site was easy to understand and use.
+
+The answers on my questions were the following:
+
+1. As an user i could clearly understand what the goal of the site was and i could complete all tasks without any issues at all.
+2. No none at all.
+3. When using the admin panel i could filter the dates from today, past 7 days, this month and this year. This was a bit confusing since any bookings earlier than today is irrelevant.
+
+
+#### Conclusion
+
+The site works fine and from a user perspective it's easy to understand and navigate. In the future i would like to change the admin view so they can see all reservations for ex. tommorow or next week. This would help them know how many guests to expect and would make planing a lot easier.
+
+
+### <ins>Manual Testing</ins>
+
+I tested the site for errors by using the Mozilla, Microsoft Edge, Safari and Google Chrome Developer Tools console open while performing all user events possible.
+To make sure the site contains valid code i validated all code using the following tools:
+
+* HTML - [W3C](https://validator.w3.org/)
+* CSS - [W3C](https://jigsaw.w3.org/css-validator/)
+* Python - [PEP8](http://pep8online.com)
+
+Only error that returns is that a few lines are a bit too long.
+
+### <ins>Bugs</ins>
+Css not working on heroku
+
+My CSS file didnt load when viewing the site via heroku. I fixed this by setting debug to False insted of having it on True. When fixing this another thing happend, none of my images were loading. After doing some research I found the reason for this from an answer on Slack from another student. The issue was that I was using relative links. Since relative links only contains the path following my own domain it didnt give the the full information of where im storing the image.
+
+As mentioned earlier i store all of my images on cloudinary so all i had to do was change the relative links to absolute links I did this by changing the following code:
+
+`<img class="img-fluid" src="static/images/meatballs.jpg" alt="Background image">`
+
+To: 
+`<img class="img-fluid" src="{% static 'images/meatballs.jpg'%}" alt="Background image">`
+
+assign table to reservation, fix: remove else and return outside of for loop
+
+
 ## **DEPLOYMENT**
 
 The site is hosted on [Heroku](https://id.heroku.com)
@@ -247,18 +327,16 @@ The code was commited to Git and pushed to Github using the terminal
 To install the Django framework and deploy this project to heroku i followed the Code institutes [Django Blog cheatsheet](https://codeinstitute.s3.amazonaws.com/fst/Django%20Blog%20Cheat%20Sheet%20v1.pdf)
 
 
-## **TESTING**
+## **CREDITS** 
 
-### <ins>Bugs</ins>
-Css not working on heroku
+* [Djecrety](https://djecrety.ir/) was used to generate my secret key
+* For my menu page i used [Bootdey](https://www.bootdey.com/snippets/view/bs4-Food-Menu) as a template and modified the code to fit my projet.
+* All images are taken from google and they all have the creative commons license.
+* [Stack Overflow](https://stackoverflow.com/) was used for research and inspiration.
+* [Django Documentaion](https://docs.djangoproject.com/en/4.0/)
 
-My CSS file didnt load when viewing the site via heroku. I fixed this by setting debug to False insted of having it on True. When fixing this another thing happend, none of my images were loading. After doing some research I found the reason for this from an answer on Slack from another student. The issue was that I was using relative links. Since relative links only contains the path following my own domain it didnt give the the full information of where im storing the image.
 
-As mentioned earlier i store all of my images on cloudinary so all i had to do was change the relative links to absolute links I did this by changing the following code:
+## **ACKNOWLEDGEMENTS**
 
-`<img class="img-fluid" src="static/images/meatballs.jpg" alt="Background image">`
-
-To: 
-`<img class="img-fluid" src="{% static 'images/meatballs.jpg'%}" alt="Background image">`
-
-assign table to reservation, fix: remove else and return outside of for loop
+* I would like to thank all of my friends that helped me test the site and make sure it was working correctly
+* Without my awsome mentor Akshat i would propably still be smashing my head against my keyboard haha. Jokes aside he really helped me to get another perspective on things and made thinking about the logic a whole lot easier.
