@@ -12,6 +12,16 @@ body {
 p, label, span {
     color: white;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn {
+    border: none;
+}
+
 .nav-link {
   font-size: 2vh;
 }

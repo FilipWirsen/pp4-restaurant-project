@@ -8,7 +8,8 @@ A live version can be found [here]()
 ## **CONTENTS**
 - [UX](#ux)
   - [User Stories](#user-stories)
-  - [Features](#features) 
+  - [Features](#features)
+  - [Design](#design)
 - [Database Design](#database-design)
 - [Deployment](#deployment)
 
@@ -41,10 +42,11 @@ The users will be looking for:
 - As a **site owner** i want users not be able to book if all of our tables are full so that i can avoid double bookings.
 - As a **site owner** i want to see all of the reservations for the night so that i can greet the customers and show them to their table.
 
+### <ins>Design</ins>
 
-### <ins>WIREFRAMES</ins>
-The wire frames for most of the pages showcasing the structure of the site.
-Created using ![balsamiq](https://balsamiq.cloud)
+#### Wireframe
+
+The wire frames for most of the pages showcasing the structure of the site. Created using ![balsamiq](https://balsamiq.cloud)
 
 #### Links to the pages
 
@@ -55,6 +57,28 @@ Created using ![balsamiq](https://balsamiq.cloud)
 - [Book page](readme/images/book-design.png)
 
 
+#### Color Scheme
+
+The main goal for the colors was to create a soothing and relaxing scheme that would make the user feel warm and welcome. The colors used are the following:
+
+![Color Scheme](readme/images/color.png)
+
+## **TECHNOLOGY USED**
+
+### <ins>Languages And Frameworks
+
+* HTML - Used to create the site structure.
+* CSS - Used to create styling for the HTML.
+*  JavaScript - Used to expand and close the hamburger menu on smaller screen sizes.
+* Python - Used to write the logic for the site, models, views, urls, etc.
+* Bootstrap - Used to simplify building the structure and styling of responsive elements. Also used to make an mobile-first approach to the site.
+* Django - Django was used as the framework within the site was coded.
+* Google fonts - Used to add the font Baloo 2.
+
+
+### <ins>TOOLS</ins>
+* Balsamiq - Wireframing.
+* Heroku - Used for hosting the website.
 
 
 ### <ins>FEATURES</ins>
