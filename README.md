@@ -1,6 +1,6 @@
 ![website on diffrent screen sizes](readme/images/responsive.png)
 
-This is a full-stack framework project build using Django, Python, HTML, CSS and JavaScript. The main goal with this project is to create a functioning and responsive full-stack website based around a reservation system. 
+This is a full-stack framework project built using Django, Python, HTML, CSS and JavaScript. The main goal with this project is to create a functioning and responsive full-stack website based around a reservation system for a restaurant. 
 
 A live version can be found [here](https://pp4-restaurant-project.herokuapp.com/)
 
@@ -8,8 +8,9 @@ A live version can be found [here](https://pp4-restaurant-project.herokuapp.com/
 ## **CONTENTS**
 - [UX](#ux)
   - [User Stories](#user-stories)
-  - [Features](#features)
   - [Design](#design)
+  - [Features](#features)
+- [Technology Used](#technology-used)
 - [Database Design](#database-design)
 - [Deployment](#deployment)
 
@@ -62,25 +63,6 @@ The wire frames for most of the pages showcasing the structure of the site. Crea
 The main goal for the colors was to create a soothing and relaxing scheme that would make the user feel warm and welcome. The colors used are the following:
 
 ![Color Scheme](readme/images/color.png)
-
-## **TECHNOLOGY USED**
-
-### <ins>Languages And Frameworks</ins>
-
-* HTML - Used to create the site structure.
-* CSS - Used to create styling for the HTML.
-*  JavaScript - Used to expand and close the hamburger menu on smaller screen sizes.
-* Python - Used to write the logic for the site, models, views, urls, etc.
-* Bootstrap - Used to simplify building the structure and styling of responsive elements. Also used to make an mobile-first approach to the site.
-* Django - Django was used as the framework within the site was coded.
-* Google fonts - Used to add the font Baloo 2.
-
-
-### <ins>Tools</ins>
-* [Balsamiq](https://balsamiq.com/) - Wireframing.
-* [Heroku](https://dashboard.heroku.com) - Used for hosting the website.
-* [Cloudinary](https://cloudinary.com/) - Used for managing images used in production
-* [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) - was used for styling the register and login form.
 
 
 ### <ins>Features</ins>
@@ -167,10 +149,34 @@ If the site owner is logged in the navigation bar has another link with the text
 
 ![Bookings admin image](readme/images/.png)
 
+
 #### Future Features
 
-* Remove old bookings. 
-* Add search bar to the admin reservation page so the restaurant can search for booking numbers or booking names.
+* Add function to delete old reservations from the database so this doesnt have to be done manually.
+* Make it easier for the site owner to navigate through all future reservations.
+* Now the user gets a message that lets them know if a time can't be booked and they can try again but i would rather have it so that when a user has entered their party size and the date they can press a button "Select time" witch checks all times that can be booked so they dont have to guess for availible times. I tried doing this for hours without sucsess but i would love to add that feature/function in the future.
+* Add a function that sends out an email with all booking details to the user.
+
+
+## **TECHNOLOGY USED**
+
+### <ins>Languages And Frameworks</ins>
+
+* HTML - Used to create the site structure.
+* CSS - Used to create styling for the HTML.
+*  JavaScript - Used to expand and close the hamburger menu on smaller screen sizes.
+* Python - Used to write the logic for the site, models, views, urls, etc.
+* Bootstrap - Used to simplify building the structure and styling of responsive elements. Also used to make an mobile-first approach to the site.
+* Django - Django was used as the framework within the site was coded.
+* Google fonts - Used to add the font Baloo 2.
+
+
+### <ins>Tools</ins>
+* [Balsamiq](https://balsamiq.com/) - Wireframing.
+* [Heroku](https://dashboard.heroku.com) - Used for hosting the website.
+* [Cloudinary](https://cloudinary.com/) - Used for managing images used in production
+* [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) - was used for styling the register and login form.
+
 
 
 ## **DATABASE DESIGN**
@@ -290,8 +296,10 @@ To make sure the site contains valid code i validated all code using the followi
 
 Only error that returns is that a few lines are a bit too long.
 
+The site was also tested on a few diffrent devices to make sure it works and looks the same on all: macbook, PC, Ipad, Iphone 11 pro and 13 max. 
+
 ### <ins>Bugs</ins>
-Css not working on heroku
+* Css not working on heroku
 
 My CSS file didnt load when viewing the site via heroku. I fixed this by setting debug to False insted of having it on True. When fixing this another thing happend, none of my images were loading. After doing some research I found the reason for this from an answer on Slack from another student. The issue was that I was using relative links. Since relative links only contains the path following my own domain it didnt give the the full information of where im storing the image.
 
@@ -302,7 +310,11 @@ As mentioned earlier i store all of my images on cloudinary so all i had to do w
 To: 
 `<img class="img-fluid" src="{% static 'images/meatballs.jpg'%}" alt="Background image">`
 
-assign table to reservation, fix: remove else and return outside of for loop
+* Issue with assigning tables to reservations
+
+ When assigning a table to a reservation it would always try to add table number one to each reservation. Since table one is occupied for two hours after the first reservation you were not able to make any other reservations for two hours earlier or after.
+
+This problem was quite easy to fix, all i had to do was remove an else statement from my for loop that looked for tables that wasnt already booked for that period.
 
 
 ## **DEPLOYMENT**
@@ -339,4 +351,4 @@ To install the Django framework and deploy this project to heroku i followed the
 ## **ACKNOWLEDGEMENTS**
 
 * I would like to thank all of my friends that helped me test the site and make sure it was working correctly
-* Without my awsome mentor Akshat i would propably still be smashing my head against my keyboard haha. Jokes aside he really helped me to get another perspective on things and made thinking about the logic a whole lot easier.
+* Without my awsome mentor Akshat i would propably still be smashing my head against my keyboard haha. Jokes aside he really helped me to get another perspective on things and made thinking about the logic a whole lot
