@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if user.is_authenticated %}
+<div class="table-responsive">
 <table class="table text-white">
     <thead>
       <tr>
@@ -26,5 +27,7 @@
       </tr>
       {% endfor %}
     </table>
+  </div>
+
 {% endif %}
 {% endblock %}

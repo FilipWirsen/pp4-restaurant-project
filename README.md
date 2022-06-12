@@ -48,7 +48,7 @@ The users will be looking for:
 
 The wire frames for most of the pages showcasing the structure of the site. Created using ![balsamiq](https://balsamiq.cloud)
 
-#### Links to the pages
+* Links to the pages
 
 - [About page](readme/images/about-design.png)
 - [Menu page](readme/images/menu-design.png)
@@ -65,7 +65,7 @@ The main goal for the colors was to create a soothing and relaxing scheme that w
 
 ## **TECHNOLOGY USED**
 
-### <ins>Languages And Frameworks
+### <ins>Languages And Frameworks</ins>
 
 * HTML - Used to create the site structure.
 * CSS - Used to create styling for the HTML.
@@ -76,12 +76,12 @@ The main goal for the colors was to create a soothing and relaxing scheme that w
 * Google fonts - Used to add the font Baloo 2.
 
 
-### <ins>TOOLS</ins>
+### <ins>Tools</ins>
 * Balsamiq - Wireframing.
 * Heroku - Used for hosting the website.
 
 
-### <ins>FEATURES</ins>
+### <ins>Features</ins>
 
 #### Home Page
 
@@ -247,7 +247,18 @@ The code was commited to Git and pushed to Github using the terminal
 To install the Django framework and deploy this project to heroku i followed the Code institutes [Django Blog cheatsheet](https://codeinstitute.s3.amazonaws.com/fst/Django%20Blog%20Cheat%20Sheet%20v1.pdf)
 
 
+## **TESTING**
+
 ### <ins>Bugs</ins>
 Css not working on heroku
+
+My CSS file didnt load when viewing the site via heroku. I fixed this by setting debug to False insted of having it on True. When fixing this another thing happend, none of my images were loading. After doing some research I found the reason for this from an answer on Slack from another student. The issue was that I was using relative links. Since relative links only contains the path following my own domain it didnt give the the full information of where im storing the image.
+
+As mentioned earlier i store all of my images on cloudinary so all i had to do was change the relative links to absolute links I did this by changing the following code:
+
+`<img class="img-fluid" src="static/images/meatballs.jpg" alt="Background image">`
+
+To: 
+`<img class="img-fluid" src="{% static 'images/meatballs.jpg'%}" alt="Background image">`
 
 assign table to reservation, fix: remove else and return outside of for loop

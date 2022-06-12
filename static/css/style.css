@@ -8,6 +8,12 @@ body {
     font-family: 'Baloo 2', cursive;
 }
 /* Base style */
+
+.row > * {
+    padding-right: 0px !important;
+}
+
+
 p, label, span {
     color: white;
 }
