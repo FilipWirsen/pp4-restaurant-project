@@ -9,10 +9,6 @@ body {
 }
 /* Base style */
 
-form {
-    padding-left: 0px;
-}
-
 p, label, span {
     color: white;
 }

@@ -28,6 +28,8 @@ def check_availability(party_size, date, start_time):
     """
     Checks if booking time is availible
     """
+
+    # looking for times 105 minutes earlier or after.
     bookings_before_time = start_time - 105
     bookings_after_time = start_time + 105
     if party_size <= 2:
@@ -35,20 +37,21 @@ def check_availability(party_size, date, start_time):
     elif party_size >= 3:
         table_size = 4
     get_bookings_before = Reservation.objects.filter(
-        book_date=date, table__table_size__contains=table_size, book_time__range=(
-            bookings_before_time, start_time))
+    book_date=date, table__table_size__contains=table_size, book_time__range=(
+        bookings_before_time, start_time))
     get_bookings_after = Reservation.objects.filter(
-        book_date=date, table__table_size__contains=table_size, book_time__range=(
-            start_time, bookings_after_time))
-    if get_bookings_before.count() == 5 or get_bookings_after.count() == 5:
+    book_date=date, table__table_size__contains=table_size, book_time__range=(
+        start_time, bookings_after_time))
+    tables = Table.objects.filter(table_size=table_size)
+    total_tables = tables.count()
+    if get_bookings_before.count() == total_tables or get_bookings_after.count() == total_tables:
         return False, False
     else:
-        tables = Table.objects.filter(table_size=table_size)
         for table in tables:
             if not Reservation.objects.filter(book_date=date, book_time__range=(bookings_before_time, bookings_after_time), table=table).exists():
                 availible_table = table
                 return availible_table, True            
-        return False, False
+    return False, False
 
 
 @login_required
@@ -66,6 +69,7 @@ def reserve_table(request):
             post.size = data['party_size']
             post.date = data['book_date']
             post.time = data['book_time']
+            # Add 120 minutes to the endtime because each time is two hours long.
             post.end_time = post.time + 120
 
             if post.size > 4:
