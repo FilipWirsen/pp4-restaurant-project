@@ -149,13 +149,6 @@ The reservations page shows the user all of their reservations and lets them edi
 ![Your reservations image](readme/images/manage.png)
 
 
-#### Reservations Page (Admin)
-
-If the site owner is logged in the navigation bar has another link with the text "Reservations". This page shows all of tonights bookings witch makes it easy for the restaurant to greet and show guests to their table.
-
-![Bookings admin image](readme/images/.png)
-
-
 #### Future Features
 
 * Add function to delete old reservations from the database so this doesnt have to be done manually.
