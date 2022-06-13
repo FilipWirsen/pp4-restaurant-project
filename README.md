@@ -12,12 +12,16 @@ A live version can be found [here](https://pp4-restaurant-project.herokuapp.com/
   - [Features](#features)
 - [Technology Used](#technology-used)
 - [Database Design](#database-design)
+- [Testing](#testing)
 - [Deployment](#deployment)
+- [Credits](#credits)
+- [Acknowledgements](#acknowledgements)
 
 
 
 
 ## **UX**
+
 I started with Strategy, thinking about who was going to use the website and what their goals would be. 
 
 The target audience for this website is:
@@ -43,11 +47,13 @@ The users will be looking for:
 - As a **site owner** i want users not be able to book if all of our tables are full so that i can avoid double bookings.
 - As a **site owner** i want to see all of the reservations for the night so that i can greet the customers and show them to their table.
 
+
+
 ### <ins>DESIGN</ins>
 
 #### Wireframe:
 
-The wire frames for most of the pages showcasing the structure of the site. Created using ![balsamiq](https://balsamiq.cloud)
+The wireframes for most of the pages showcasing the structure of the site. Created using ![balsamiq](https://balsamiq.cloud)
 
 * Links to the pages
 
@@ -60,7 +66,7 @@ The wire frames for most of the pages showcasing the structure of the site. Crea
 
 #### Color Scheme: 
 
-The main goal for the colors was to create a soothing and relaxing scheme that would make the user feel warm and welcome. The colors used are the following:
+The main goal for the colors was to create a soothing and relaxing scheme that would make the user feel warm and welcome. The main colors used are the following:
 
 ![Color Scheme](readme/images/color.png)
 
@@ -140,7 +146,7 @@ Shows you that the reservation has been confirmed and shows booking details
 
 The reservations page shows the user all of their reservations and lets them edit and delete them.
 
-![Your reservations image](readme/images/reservations.png)
+![Your reservations image](readme/images/manage.png)
 
 
 #### Reservations Page (Admin)
@@ -323,13 +329,13 @@ The site is hosted on [Heroku](https://id.heroku.com)
 
 ###  <ins>Github and Gitpod</ins>
 
-To create the repository and develop the project i followed the steps below:
+To create and develop the project i followed the steps below:
 
-1. Create the Github repository and start development:
   * Install the gitpod addon if not already installed. 
   * Go to your github profile and press the green "New" button.
-  * Enter a name and for this project i used the Code Institute Full-template provided by them.
+  * Enter a name for the project and for this project i used the Code Institute Full-template provided by them.
   * Once your repository is created in the top right there should be a green button with the text "Gitpod". Press the button and wait for the build to finish.
+  * Now you can start developing.
 
 The code was commited to Git and pushed to Github using the terminal
 
@@ -342,7 +348,7 @@ To install the Django framework and deploy this project to heroku i followed the
 ## **CREDITS** 
 
 * [Djecrety](https://djecrety.ir/) was used to generate my secret key
-* For my menu page i used [Bootdey](https://www.bootdey.com/snippets/view/bs4-Food-Menu) as a template and modified the code to fit my projet.
+* For my menu page i used i copied a template that i found on [Bootdey](https://www.bootdey.com/snippets/view/bs4-Food-Menu) and modified the code to fit my project.
 * All images are taken from google and they all have the creative commons license.
 * [Stack Overflow](https://stackoverflow.com/) was used for research and inspiration.
 * [Django Documentaion](https://docs.djangoproject.com/en/4.0/)
