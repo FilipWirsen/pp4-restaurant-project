@@ -35,9 +35,6 @@
             <a class="nav-link" href="{% url 'login' %}">Login</a>
             <a class="nav-link" href="{% url 'register' %}">Register</a>
             {% endif %}
-            {% if user.is_superuser %}
-            <a class="nav-link" href="{% url 'bookings' %}">Reservations</a>
-            {% endif %}
           </div>
         </div>
       </nav>
