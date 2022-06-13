@@ -9,8 +9,8 @@ body {
 }
 /* Base style */
 
-.container {
-    padding-left: 0px !important;
+form {
+    padding-left: 0px;
 }
 
 p, label, span {

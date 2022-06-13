@@ -3,6 +3,7 @@
 {% block content %}
 
 {% if user.is_authenticated %}
+<div class="container" style="padding-left: 0px;">
 <form action="" method="POST">
       <div class="col-md-6 mx-auto">
         <h1 class="text-center header">Book a Table</h1>
@@ -29,6 +30,7 @@
       </div>
     </div>
 </form>
+</div>
 {% if messages %}
   {% for message in messages %}
     <div class="bg-danger">
