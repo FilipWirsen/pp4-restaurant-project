@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, HttpResponseRedirect
 from .forms import MakeReservationForm
 from .models import Reservation, Table
 from django.contrib import messages
@@ -26,7 +26,7 @@ def menu(request):
 
 def check_availability(party_size, date, start_time):
     """
-    Checks if booking time is availible
+    Checks if booking time is available
     """
 
     # looking for times 105 minutes earlier or after.
@@ -49,8 +49,8 @@ def check_availability(party_size, date, start_time):
     else:
         for table in tables:
             if not Reservation.objects.filter(book_date=date, book_time__range=(bookings_before_time, bookings_after_time), table=table).exists():
-                availible_table = table
-                return availible_table, True            
+                available_table = table
+                return available_table, True        
     return False, False
 
 
@@ -82,11 +82,11 @@ def reserve_table(request):
                 return render(
                     request, 'reservation/reservation.html', {'form': form})
 
-            availible_table, availible = check_availability(
+            available_table, available = check_availability(
                 post.size, post.date, post.time)
 
-            if availible:
-                post.table = availible_table
+            if available:
+                post.table = available_table
                 post.save()
                 booking = post
                 return render(
@@ -94,7 +94,7 @@ def reserve_table(request):
             else:
                 form = MakeReservationForm()
                 messages.error(
-                    request, "Time is not availible, please choose another")
+                    request, "Time is not available, please choose another")
                 return render(
                     request, 'reservation/reservation.html', {'form': form})
     else:
@@ -122,7 +122,7 @@ def update_reservation(request, reservation_id):
     """
     Function to update reservation
     """
-    reservation = Reservation.objects.filter(pk=reservation_id).first()
+    reservation = Reservation.objects.get(pk=reservation_id)
     form = MakeReservationForm(request.POST or None, instance=reservation)
     if form.is_valid():
         post = form.save(commit=False)
@@ -140,11 +140,10 @@ def update_reservation(request, reservation_id):
             return render(
                 request, 'reservation/update_reservation.html', {'form': form})
 
-        availible_table, availible = check_availability(
+        available_table, available = check_availability(
             post.size, post.date, post.time)
-
-        if availible:
-            post.table = availible_table
+        if available:
+            post.table = available_table
             post.save()
             booking = post
             return render(
@@ -152,7 +151,7 @@ def update_reservation(request, reservation_id):
         else:
             form = MakeReservationForm()
             messages.error(
-                request, "Time is not availible, please choose another")
+                request, "Time is not available, please choose another")
             return render(
                 request, 'reservation/update_reservation.html', {'form': form})
     else:

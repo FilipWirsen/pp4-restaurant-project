@@ -7,15 +7,15 @@
             {% csrf_token %}
             <div class="mb-3">
               <label for="party_size" class="form-label"><P>Number of Guests</P></label>
-              <input type="number" name="party_size" class="form-control" id="exampleInputPassword1" placeholder="{{reservation.party_size}}">
+              <input type="number" name="party_size" class="form-control" id="exampleInputPassword1" value="{{reservation.party_size}}">
             </div>
             <div class="mb-3">
               <label for="book_date" class="form-label"><P>Date</P></label>
-              <input type="date" name="book_date" id="date" class="form-control" id="exampleInputPassword1" placeholder="">
+              <input type="date" name="book_date" id="date" class="form-control" id="exampleInputPassword1" value="{{reservation.book_date}}">
             </div>
             <div class="mb-3">
               <label for="book_time" class="form-label"><P>Time</P></label>
-              <select name="book_time" required="" id="id_book_time" class="form-select" placeholder="{{reservation.get_book_time_display}}">
+              <select name="book_time" required="" id="id_book_time" class="form-select" value="{{reservation.get_book_time_display}}">
                 {% for key, value in form.fields.book_time.choices %}
                 <option value="{{ key }}">{{ value }}</option>
                 {% endfor %}

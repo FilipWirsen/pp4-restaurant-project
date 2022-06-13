@@ -18,7 +18,6 @@ class Table(models.Model):
 class Reservation(models.Model):
     """
     Model for storing reservations.
-    Each time choice key is the amount of minutes until the time 'value'
     """
     reservation_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
@@ -26,6 +25,7 @@ class Reservation(models.Model):
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
     book_date = models.DateField(default=timezone.now)
     TIME_CHOICES = [
+        # Each time choice key is the amount of minutes until the time 'value' ex. 17:30 in minutes = 17*60 + 30 = 1050
         (1050, '17:30'),
         (1065, '17:45'),
         (1080, '18:00'),
