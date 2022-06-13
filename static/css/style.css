@@ -9,11 +9,6 @@ body {
 }
 /* Base style */
 
-.row > * {
-    padding-right: 0px !important;
-}
-
-
 p, label, span {
     color: white;
 }
