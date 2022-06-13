@@ -22,7 +22,7 @@ A live version can be found [here](https://pp4-restaurant-project.herokuapp.com/
 
 ## **UX**
 
-I started with Strategy, thinking about who was going to use the website and what their goals would be. 
+I started with strategy, thinking about who was going to use the website and what their goals would be. 
 
 The target audience for this website is:
 
@@ -85,9 +85,17 @@ Navigation bar:
 
 ![Navigation bar image](readme/images/navbar.png)
 
+Welcome message:
+
+*  The home page welcomes the user and lets them know what the site is for.
+
+![Landing Page](readme/images/landing-image.png)
+
+
+
 Opening hours:
 
-* The home page welcomes the user and lets them know what the site is for. There is a table that shows the user the restaurants opening hours and contact information.
+* There is a table that shows the user the restaurants opening hours and contact information.
 
 ![Contact image](readme/images/contact.png)
 
@@ -205,7 +213,7 @@ For creating and storing users i used Django’s built in authentication system 
 |             | end_time     | Int           |
 
 
-For the book_time choices i had the following choices: 
+For the book_time choices i have the following choices: 
 
         (1050, '17:30'),
         (1065, '17:45'),
